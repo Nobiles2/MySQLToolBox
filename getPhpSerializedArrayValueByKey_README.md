@@ -1,7 +1,39 @@
+getPhpSerializedArrayValueByKey
+============
+
+##Specification
+
 **getPhpSerializedArrayValueByKey(_input_string TEXT, _key TEXT)**
 **returns TEXT CHARSET utf8;**
 
-Example usage and kind of test case:
+##Simple example usage:
+
+```php
+<?php
+	//return of this serialize is copied to mysql and set to @s
+    print_r(
+        serialize(array(            
+            'custom_key'=>'Lorem ipsum'            
+            )
+        )
+    );
+?>
+```
+
+```mysql
+SET @s := 'a:1:{s:10:"custom_key";s:11:"Lorem ipsum";}';
+
+SELECT `getPhpSerializedArrayValueByKey`(@s,'custom_key') AS `value`;
+```
+
+###Result
+|value|
+|-------------|
+|Lorem ipsum|
+
+Returned value is string so it can be used in JOINS, WHERE, other functions like CONCAT etc.
+
+##More advanced example usage:
 
 ```php
 <?php 
@@ -10,7 +42,7 @@ Example usage and kind of test case:
     $b->foo = 'Lorem';
     $b->bar = 10;
 
-//return of this serialize is copied to mysql and set to @s
+	//return of this serialize is copied to mysql and set to @s
     print_r(
         serialize(array(
             'a' => 5.99,
@@ -63,4 +95,8 @@ SELECT
 ;
 ```
 
-Returned value is string so it can be used in JOINS, WHERE, other functions like CONCAT etc.
+###Result
+
+a|b|c|d|e|f|multibytekey|g|h|i"||false|Array|j
+-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|-------------|
+5.9900000000000002131628207280300557613372802734375|O:8:"stdClass":2:{s:3:"foo";s:5:"Lorem";s:3:"bar";i:10;}|8|Lorem ipsum|1|a:4:{i:0;i:1;i:1;i:2;s:3:"很";s:5:"Lorem";s:1:"g";a:1:{s:1:"h";a:2:{i:0;i:8;i:1;a:1:{s:2:"i"";i:20;}}}}|Lorem|a:1:{s:1:"h";a:2:{i:0;i:8;i:1;a:1:{s:2:"i"";i:20;}}}|a:2:{i:0;i:8;i:1;a:1:{s:2:"i"";i:20;}}|20|value1|NULL|value4|a:2:{i:0;i:1;i:1;i:2;}
