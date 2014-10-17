@@ -3,8 +3,10 @@ getPhpSerializedArrayValueByKey
 
 ##Specification
 
-**getPhpSerializedArrayValueByKey(_input_string TEXT, _key TEXT)**
-**returns TEXT CHARSET utf8;**
+```mysql
+getPhpSerializedArrayValueByKey(_input_string TEXT, _key TEXT)
+returns TEXT CHARSET utf8;
+```
 
 ##Simple example usage:
 
