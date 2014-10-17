@@ -1,7 +1,7 @@
 MySQLToolBox
 ============
 
-Set of sql scripts which help working with database.
+Set of MySQL scripts which help working with database.
 
 Tools list:
 
