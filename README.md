@@ -6,7 +6,8 @@ Set of sql scripts which help working with database.
 Tools list:
 
 
-1. Function getPhpSerializedArrayValueByKey *Function returns last value from serialized array by specific string key.*
+1. Function **getPhpSerializedArrayValueByKey** <br />
+	*Function returns last value from serialized array by specific string key.*
 
 
 **1.) getPhpSerializedArrayValueByKey(_input_string TEXT, _key TEXT)**
