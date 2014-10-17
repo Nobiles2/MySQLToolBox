@@ -23,7 +23,7 @@ getPhpSerializedArrayValueByKey
 ```mysql
 SET @s := 'a:1:{s:10:"custom_key";s:11:"Lorem ipsum";}';
 
-SELECT `getPhpSerializedArrayValueByKey`(@s,'custom_key') AS `value`;
+SELECT getPhpSerializedArrayValueByKey(@s,'custom_key') AS `value`;
 ```
 
 ###Result
@@ -78,20 +78,20 @@ SET @s := 'a:11:{s:1:"a";d:5.9900000000000002131628207280300557613372802734375;s
 
 
 SELECT 
-	`getPhpSerializedArrayValueByKey`(@s,'a') AS a,
-	`getPhpSerializedArrayValueByKey`(@s,'b') AS b,
-	`getPhpSerializedArrayValueByKey`(@s,'c') AS c,
-	`getPhpSerializedArrayValueByKey`(@s,'d') AS d,
-	`getPhpSerializedArrayValueByKey`(@s,'e') AS e,
-	`getPhpSerializedArrayValueByKey`(@s,'f') AS f,
-	`getPhpSerializedArrayValueByKey`(@s,'很') AS 'multibytekey',
-	`getPhpSerializedArrayValueByKey`(@s,'g') AS g,
-	`getPhpSerializedArrayValueByKey`(@s,'h') AS h,
-	`getPhpSerializedArrayValueByKey`(@s,'i"') AS 'i"',
-	`getPhpSerializedArrayValueByKey`(@s,'') AS '',
-	`getPhpSerializedArrayValueByKey`(@s,0) AS 'false',-- not work because only string keys work
-	`getPhpSerializedArrayValueByKey`(@s,'Array') AS 'Array',
-	`getPhpSerializedArrayValueByKey`(@s,'j') AS 'j'
+	getPhpSerializedArrayValueByKey(@s,'a') AS a,
+	getPhpSerializedArrayValueByKey(@s,'b') AS b,
+	getPhpSerializedArrayValueByKey(@s,'c') AS c,
+	getPhpSerializedArrayValueByKey(@s,'d') AS d,
+	getPhpSerializedArrayValueByKey(@s,'e') AS e,
+	getPhpSerializedArrayValueByKey(@s,'f') AS f,
+	getPhpSerializedArrayValueByKey(@s,'很') AS 'multibytekey',
+	getPhpSerializedArrayValueByKey(@s,'g') AS g,
+	getPhpSerializedArrayValueByKey(@s,'h') AS h,
+	getPhpSerializedArrayValueByKey(@s,'i"') AS 'i"',
+	getPhpSerializedArrayValueByKey(@s,'') AS '',
+	getPhpSerializedArrayValueByKey(@s,0) AS 'false',-- not work because only string keys work
+	getPhpSerializedArrayValueByKey(@s,'Array') AS 'Array',
+	getPhpSerializedArrayValueByKey(@s,'j') AS 'j'
 ;
 ```
 
