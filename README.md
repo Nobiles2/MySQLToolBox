@@ -8,3 +8,6 @@ Tools list:
 
 1. Function **<a href="https://github.com/KredytyChwilowki/MySQLToolBox/blob/master/getPhpSerializedArrayValueByKey_README.md">getPhpSerializedArrayValueByKey</a>** <br />
 	*Function returns last value from serialized array by specific string key.*
+
+2. Function/Procedure **<a href="https://github.com/KredytyChwilowki/MySQLToolBox/blob/master/devLog_README.md">devLog/devReset</a>** <br />
+	*Two functions and procedures which helps in debuging other function or procedures.*
