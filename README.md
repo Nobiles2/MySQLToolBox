@@ -10,4 +10,4 @@ Tools list:
 	*Function returns last value from serialized array by specific string key.*
 
 2. Function/Procedure **<a href="https://github.com/KredytyChwilowki/MySQLToolBox/blob/master/devLog_README.md">devLog/devReset</a>** <br />
-	*Two functions and procedures which helps in debuging other function or procedures.*
+	*Two functions and procedures which helps in debuging other functions and procedures.*
