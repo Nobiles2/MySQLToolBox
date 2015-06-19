@@ -1,4 +1,4 @@
-devLog
+devLog/devReset
 ============
 
 ##Specification
