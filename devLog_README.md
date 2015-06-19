@@ -7,13 +7,13 @@ devLog
 ```mysql
 PROCEDURE devLog(concat_data TEXT)
 
-FUNCTION `devLog`(concat_data TEXT)
-RETURNS TEXT //RETURN concat_data;
+FUNCTION `devLog`(concat_data TEXT) -- only adapter for procedure devLog
+RETURNS TEXT -- RETURN concat_data;
 
 PROCEDURE `devReset`()
 
-FUNCTION `devReset`()
-RETURNS TEXT //RETURN '';
+FUNCTION `devReset`() -- only adapter for procedure devReset
+RETURNS TEXT -- RETURN '';
 ```
 
 ##Example usage:
