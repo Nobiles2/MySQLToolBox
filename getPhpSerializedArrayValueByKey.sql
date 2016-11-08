@@ -9,7 +9,7 @@ BEGIN
 		
 		@author Adam Wnęk (http://kredyty-chwilowki.pl/)
 		@licence MIT
-		@version 1.1b
+		@version 1.2
 	*/
 	-- required variables
 	DECLARE __output_part,__output,__extra_byte_counter,__extra_byte_number,__value_type,__array_part_temp TEXT;
