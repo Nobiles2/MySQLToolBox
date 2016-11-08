@@ -1,20 +1,19 @@
 DELIMITER $$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `getPhpSerializedArrayValueByKey`(_input_string TEXT, _key TEXT) RETURNS TEXT CHARSET utf8
-	DETERMINISTIC
-	COMMENT 'Function returns last value from serialized array by specific string key.'
+CREATE DEFINER=`root`@`localhost` FUNCTION `getPhpSerializedArrayValueByKey`(_input_string TEXT, _key TEXT) RETURNS TEXT CHARSET utf8 COLLATE utf8_polish_ci
+    DETERMINISTIC
+    COMMENT 'Function returns last value from serialized array by specific string key.'
 BEGIN
 	/*
 		Function returns last value from serialized array by specific string key.
 		
 		@author Adam Wnęk (http://kredyty-chwilowki.pl/)
 		@licence MIT
-		@version 1.1
+		@version 1.1b
 	*/
 	-- required variables
 	DECLARE __output_part,__output,__extra_byte_counter,__extra_byte_number,__value_type,__array_part_temp TEXT;
 	DECLARE __value_length,__char_ord,__start,__char_counter,__non_multibyte_length,__array_close_bracket_counter,__array_open_bracket_counter INT SIGNED;
-
 	SET __output := NULL;
 	
 	-- check if key exists in input
@@ -29,7 +28,6 @@ BEGIN
 		-- custom cut depends of value type
 		CASE 	
 		WHEN __value_type = 'a' THEN
-		
 			-- we get proper array by counting open and close brackets
 			SET __array_open_bracket_counter := 1;
 			SET __array_close_bracket_counter := 0;
@@ -52,7 +50,7 @@ BEGIN
 			END WHILE;
 			-- final array is from beginning to [__array_close_bracket_counter] count of closing }
 			SET __output := CONCAT(SUBSTRING_INDEX(__output_part,'}',__array_close_bracket_counter),'}');
-		
+			
 		WHEN __value_type = 'd' OR __value_type = 'i' OR __value_type = 'b' THEN
 			
 			-- from left to first appearance of }, from right to first :
@@ -62,6 +60,10 @@ BEGIN
 			
 			-- from left to first appearance of ;} but without it so we add it back
 			SET __output := CONCAT(SUBSTRING_INDEX(__output_part,';}',1),';}');
+			
+		WHEN __value_type = 'N' THEN 
+            -- when we have null return empty string
+            SET __output := NULL;		
 		ELSE
 			
 			-- get serialized length
